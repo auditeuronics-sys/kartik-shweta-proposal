@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartik ❤️ Shweta</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+body{
+height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;
+background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ffb199,#ffd1dc);
+background-size:400% 400%;animation:bg 10s ease infinite;
+}
+@keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.card{
+background:rgba(255,255,255,.15);backdrop-filter:blur(12px);
+padding:35px;border-radius:25px;color:white;text-align:center;
+width:90%;max-width:700px;box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+button{padding:12px 28px;font-size:18px;border:none;border-radius:30px;cursor:pointer;margin:10px}
+#yes{background:#fff;color:#ff4f81;font-weight:bold}
+#no{background:#ff4f81;color:#fff;position:absolute}
+#success{display:none}
+.heart{position:absolute;animation:float 6s linear infinite}
+@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-100px);opacity:0}}
+</style>
+</head>
+<body>
+
+<div class="card" id="question">
+<h1>❤️ Dear Shweta ❤️</h1>
+<br>
+<p>🌹 Every love story is beautiful, but ours will be my favorite. 🌹</p>
+<br>
+<p>From the moment I met you, every day became a little brighter. Today I have one special question...</p>
+<br>
+<h2>Will You Be My Girlfriend? 💖</h2>
+<br>
+<button id="yes">YES 💍</button>
+<button id="no">NO 🙈</button>
+</div>
+
+<div class="card" id="success">
+<h1>💕 She Said YES! 💕</h1>
+<br>
+<h2>Kartik ❤️ Shweta</h2>
+<br>
+<p>
+Dear Shweta,<br><br>
+Thank you for making this moment special.<br>
+I promise to respect you, support you, make you laugh,
+and create beautiful memories together.<br><br>
+Forever Yours,<br>
+<b>Kartik ❤️</b>
+</p>
+</div>
+
+<script>
+const noBtn=document.getElementById('no');
+function move(){
+ let x=Math.random()*(window.innerWidth-150);
+ let y=Math.random()*(window.innerHeight-80);
+ noBtn.style.left=x+'px';
+ noBtn.style.top=y+'px';
+}
+noBtn.addEventListener('mouseover',move);
+noBtn.addEventListener('touchstart',move);
+
+document.getElementById('yes').onclick=()=>{
+ document.getElementById('question').style.display='none';
+ document.getElementById('success').style.display='block';
+ for(let i=0;i<200;i++){
+   let h=document.createElement('div');
+   h.className='heart';
+   h.innerHTML='❤️';
+   h.style.left=Math.random()*100+'vw';
+   h.style.fontSize=(15+Math.random()*25)+'px';
+   document.body.appendChild(h);
+   setTimeout(()=>h.remove(),6000);
+ }
+};
+</script>
+</body>
+</html>
